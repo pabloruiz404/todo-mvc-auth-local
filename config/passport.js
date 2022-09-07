@@ -1,3 +1,7 @@
+//Setting up passport functionality copy pasta seen by the return false message.
+//Field types email address check passwords.
+//Export to be used in server.js and controllers folder file auth.js.
+
 const LocalStrategy = require('passport-local').Strategy
 const mongoose = require('mongoose')
 const User = require('../models/User')

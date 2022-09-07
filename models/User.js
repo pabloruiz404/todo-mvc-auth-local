@@ -1,6 +1,8 @@
+//Model that is interacting with our database using mongoose to connect and bycrypt to hash/salt/encrypt our user password interactions to the database.
 const bcrypt = require('bcrypt')
 const mongoose = require('mongoose')
 
+//Blueprint for user object.
 const UserSchema = new mongoose.Schema({
   userName: { type: String, unique: true },
   email: { type: String, unique: true },
@@ -25,12 +27,12 @@ const UserSchema = new mongoose.Schema({
 
 
 // Helper method for validating user's password.
-
+//Comparing passwords to make sure they matcch the salted/hashed/encrypted password in the database.
 UserSchema.methods.comparePassword = function comparePassword(candidatePassword, cb) {
   bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
     cb(err, isMatch)
   })
 }
 
-
+//Exporting the model so we can use it elsewhere in our code.
 module.exports = mongoose.model('User', UserSchema)

@@ -1,3 +1,4 @@
+<!--View engine that handles the login page HTML.-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,6 +18,8 @@
             <div class="alert alert-danger"><%= el.msg %></div>
         <% }) %>    
     <% } %>
+    <!--Login is passing a route up to the server and controller to post.-->
+    <!--If you do not specify a method, the method by default will be get.-->
     <form action="/login" method="POST">
         <input type="email" name="email" placeholder="Email">
         <input type="password" name="password" placeholder="Password">
